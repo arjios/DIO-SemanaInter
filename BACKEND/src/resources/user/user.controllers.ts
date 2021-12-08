@@ -15,7 +15,12 @@ export class UserController {
     }
 
     async signup(req: Request, res: Response) {
-        return res.send("Criando com o usuario: (Register)");
+
+        const userService = new UserService();
+
+        const user = await userService.signup(req.body);
+
+        return res.status(200).send(user);
     }
 
 }
